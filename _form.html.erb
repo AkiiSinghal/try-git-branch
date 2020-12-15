@@ -1,0 +1,32 @@
+<%= form_with model: @article, local: true do |form| %>
+  <% if @article.errors.any? %>
+    <% @article.errors.full_messages.each do |message| %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  <% end %>
+ 
+  <p class="form-group">
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+  </p>
+
+  <p class="form-group">
+    <%= form.label :author %><br>
+    <%= form.text_field :author, class:"form-control", placeholder:"Author" %>
+  </p>
+ 
+  <p class="form-group">
+    <%= form.label :content %><br>
+    <%= form.text_area :text, class:"form-control", rows:"6" %>
+  </p>
+ 
+  <p class="form-group">
+    <%= form.submit class:"btn btn-secondary" %>
+  </p>
+ 
+<% end %>

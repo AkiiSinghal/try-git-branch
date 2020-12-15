@@ -1,0 +1,28 @@
+<h1>Articles</h1>
+
+<div class="container">
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="card" style="width: 18rem; margin: 10px;">
+        <div class="card-body">
+          <h5 class="card-title"><%= article.title %></h5>
+          <h6 class="card-subtitle"><%= article.author %></h6>
+          <div style="width: 250px; margin: 0 0 1em 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;">
+            <p>
+              <%= article.text %>
+            </p>
+          </div>
+          <div style="position:absolute; bottom:0; margin-bottom: 10px;">
+            <%= link_to 'Show', article %> |
+            <%= link_to 'Edit', edit_article_path(article) %> |
+            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Article', new_article_path %>
